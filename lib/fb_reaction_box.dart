@@ -396,157 +396,127 @@ class FbReactionState extends State<FbReaction> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      child: Column(
-        children: <Widget>[
-          // Just a top space
-          // Container(
-          //   width: double.infinity,
-          //   height: 100.0,
-          // ),
+      child: Container(
+        // height: 70,
+        child: Stack(
+          // alignment: Alignment.bottomCenter,
+          children: <Widget>[
+            renderIcons(),
+            renderBtnLike(),
 
-          // main content
-          Container(
-            // color: Colors.red,
-            child: Stack(
-              children: <Widget>[
-                // Box and icons
-                Stack(
-                  children: <Widget>[
-                    // Box
-                    renderBox(),
+            whichIconUserChoose == 1 && !isDragging
+                ? Container(
+                    child: Transform.scale(
+                      child: Image.asset(
+                        'images/like.gif',
+                        width: 40.0,
+                        height: 40.0,
+                      ),
+                      scale: this.zoomIconWhenRelease.value,
+                    ),
+                    margin: EdgeInsets.only(
+                      top: processTopPosition(this.moveUpIconWhenRelease.value),
+                      left: this.moveLeftIconLikeWhenRelease.value,
+                    ),
+                  )
+                : Container(),
 
-                    // Icons
-                    renderIcons(),
-                  ],
-                  alignment: Alignment.bottomCenter,
-                ),
+            // Icon love
+            whichIconUserChoose == 2 && !isDragging
+                ? Container(
+                    child: Transform.scale(
+                      child: Image.asset(
+                        'images/love.gif',
+                        width: 40.0,
+                        height: 40.0,
+                      ),
+                      scale: this.zoomIconWhenRelease.value,
+                    ),
+                    margin: EdgeInsets.only(
+                      top: processTopPosition(this.moveUpIconWhenRelease.value),
+                      left: this.moveLeftIconLoveWhenRelease.value,
+                    ),
+                  )
+                : Container(),
 
-                // Button like
-                renderBtnLike(),
+            // Icon haha
+            whichIconUserChoose == 3 && !isDragging
+                ? Container(
+                    child: Transform.scale(
+                      child: Image.asset(
+                        'images/haha.gif',
+                        width: 40.0,
+                        height: 40.0,
+                      ),
+                      scale: this.zoomIconWhenRelease.value,
+                    ),
+                    margin: EdgeInsets.only(
+                      top: processTopPosition(this.moveUpIconWhenRelease.value),
+                      left: this.moveLeftIconHahaWhenRelease.value,
+                    ),
+                  )
+                : Container(),
 
-                // Icons when jump
-                // Icon like
-                whichIconUserChoose == 1 && !isDragging
-                    ? Container(
-                        child: Transform.scale(
-                          child: Image.asset(
-                            'images/like.gif',
-                            width: 40.0,
-                            height: 40.0,
-                          ),
-                          scale: this.zoomIconWhenRelease.value,
-                        ),
-                        margin: EdgeInsets.only(
-                          top: processTopPosition(
-                              this.moveUpIconWhenRelease.value),
-                          left: this.moveLeftIconLikeWhenRelease.value,
-                        ),
-                      )
-                    : Container(),
+            // Icon Wow
+            whichIconUserChoose == 4 && !isDragging
+                ? Container(
+                    child: Transform.scale(
+                      child: Image.asset(
+                        'images/wow.gif',
+                        width: 40.0,
+                        height: 40.0,
+                      ),
+                      scale: this.zoomIconWhenRelease.value,
+                    ),
+                    margin: EdgeInsets.only(
+                      top: processTopPosition(this.moveUpIconWhenRelease.value),
+                      left: this.moveLeftIconWowWhenRelease.value,
+                    ),
+                  )
+                : Container(),
 
-                // Icon love
-                whichIconUserChoose == 2 && !isDragging
-                    ? Container(
-                        child: Transform.scale(
-                          child: Image.asset(
-                            'images/love.gif',
-                            width: 40.0,
-                            height: 40.0,
-                          ),
-                          scale: this.zoomIconWhenRelease.value,
-                        ),
-                        margin: EdgeInsets.only(
-                          top: processTopPosition(
-                              this.moveUpIconWhenRelease.value),
-                          left: this.moveLeftIconLoveWhenRelease.value,
-                        ),
-                      )
-                    : Container(),
+            // Icon sad
+            whichIconUserChoose == 5 && !isDragging
+                ? Container(
+                    child: Transform.scale(
+                      child: Image.asset(
+                        'images/sad.gif',
+                        width: 40.0,
+                        height: 40.0,
+                      ),
+                      scale: this.zoomIconWhenRelease.value,
+                    ),
+                    margin: EdgeInsets.only(
+                      top: processTopPosition(this.moveUpIconWhenRelease.value),
+                      left: this.moveLeftIconSadWhenRelease.value,
+                    ),
+                  )
+                : Container(),
 
-                // Icon haha
-                whichIconUserChoose == 3 && !isDragging
-                    ? Container(
-                        child: Transform.scale(
-                          child: Image.asset(
-                            'images/haha.gif',
-                            width: 40.0,
-                            height: 40.0,
-                          ),
-                          scale: this.zoomIconWhenRelease.value,
-                        ),
-                        margin: EdgeInsets.only(
-                          top: processTopPosition(
-                              this.moveUpIconWhenRelease.value),
-                          left: this.moveLeftIconHahaWhenRelease.value,
-                        ),
-                      )
-                    : Container(),
-
-                // Icon Wow
-                whichIconUserChoose == 4 && !isDragging
-                    ? Container(
-                        child: Transform.scale(
-                          child: Image.asset(
-                            'images/wow.gif',
-                            width: 40.0,
-                            height: 40.0,
-                          ),
-                          scale: this.zoomIconWhenRelease.value,
-                        ),
-                        margin: EdgeInsets.only(
-                          top: processTopPosition(
-                              this.moveUpIconWhenRelease.value),
-                          left: this.moveLeftIconWowWhenRelease.value,
-                        ),
-                      )
-                    : Container(),
-
-                // Icon sad
-                whichIconUserChoose == 5 && !isDragging
-                    ? Container(
-                        child: Transform.scale(
-                          child: Image.asset(
-                            'images/sad.gif',
-                            width: 40.0,
-                            height: 40.0,
-                          ),
-                          scale: this.zoomIconWhenRelease.value,
-                        ),
-                        margin: EdgeInsets.only(
-                          top: processTopPosition(
-                              this.moveUpIconWhenRelease.value),
-                          left: this.moveLeftIconSadWhenRelease.value,
-                        ),
-                      )
-                    : Container(),
-
-                // Icon angry
-                whichIconUserChoose == 6 && !isDragging
-                    ? Container(
-                        child: Transform.scale(
-                          child: Image.asset(
-                            'images/angry.gif',
-                            width: 40.0,
-                            height: 40.0,
-                          ),
-                          scale: this.zoomIconWhenRelease.value,
-                        ),
-                        margin: EdgeInsets.only(
-                          top: processTopPosition(
-                              this.moveUpIconWhenRelease.value),
-                          left: this.moveLeftIconAngryWhenRelease.value,
-                        ),
-                      )
-                    : Container(),
-              ],
-            ),
-            margin: EdgeInsets.only(left: 20.0, right: 20.0),
-            // Area of the content can drag
-            // decoration:  BoxDecoration(border: Border.all(color: Colors.grey)),
-            width: double.infinity,
-            // height: 350.0,
-          ),
-        ],
+            // Icon angry
+            whichIconUserChoose == 6 && !isDragging
+                ? Container(
+                    child: Transform.scale(
+                      child: Image.asset(
+                        'images/angry.gif',
+                        width: 40.0,
+                        height: 40.0,
+                      ),
+                      scale: this.zoomIconWhenRelease.value,
+                    ),
+                    margin: EdgeInsets.only(
+                      top: processTopPosition(this.moveUpIconWhenRelease.value),
+                      left: this.moveLeftIconAngryWhenRelease.value,
+                    ),
+                  )
+                : Container(),
+          ],
+        ),
+        margin: EdgeInsets.only(left: 20.0, right: 20.0),
+        // Area of the content can drag
+        // decoration:  BoxDecoration(border: Border.all(color: Colors.grey)),
+        width: double.infinity,
+        // height: 350.0,
       ),
       onHorizontalDragEnd: onHorizontalDragEndBoxIcon,
       onHorizontalDragUpdate: onHorizontalDragUpdateBoxIcon,
@@ -574,7 +544,7 @@ class FbReactionState extends State<FbReaction> with TickerProviderStateMixin {
             : isDraggingOutside
                 ? this.zoomBoxWhenDragOutside.value
                 : 50.0,
-        margin: EdgeInsets.only(bottom: 130.0, left: 10.0),
+        // margin: EdgeInsets.only(bottom: 130.0, left: 10.0),
       ),
       opacity: this.fadeInBox.value,
     );
@@ -861,8 +831,9 @@ class FbReactionState extends State<FbReaction> with TickerProviderStateMixin {
         crossAxisAlignment: CrossAxisAlignment.center,
       ),
       width: 300.0,
-      height: 250.0,
-      margin: EdgeInsets.only(left: this.moveRightGroupIcon.value, top: 50.0),
+      // height: 100.0,
+      margin:
+          EdgeInsets.only(left: this.moveRightGroupIcon.value, bottom: 50.0),
       // uncomment here to see area of draggable
       // color: Colors.amber.withOpacity(0.5),
     );
@@ -923,7 +894,6 @@ class FbReactionState extends State<FbReaction> with TickerProviderStateMixin {
         color: Colors.white,
         border: Border.all(color: getColorBorderBtn()),
       ),
-      margin: EdgeInsets.only(top: 190.0),
     );
   }
 
