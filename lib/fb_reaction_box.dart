@@ -399,13 +399,14 @@ class FbReactionState extends State<FbReaction> with TickerProviderStateMixin {
       child: Column(
         children: <Widget>[
           // Just a top space
-          Container(
-            width: double.infinity,
-            height: 100.0,
-          ),
+          // Container(
+          //   width: double.infinity,
+          //   height: 100.0,
+          // ),
 
           // main content
           Container(
+            // color: Colors.red,
             child: Stack(
               children: <Widget>[
                 // Box and icons
@@ -543,7 +544,7 @@ class FbReactionState extends State<FbReaction> with TickerProviderStateMixin {
             // Area of the content can drag
             // decoration:  BoxDecoration(border: Border.all(color: Colors.grey)),
             width: double.infinity,
-            height: 350.0,
+            // height: 350.0,
           ),
         ],
       ),
